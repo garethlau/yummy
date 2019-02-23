@@ -21,6 +21,7 @@ module.exports = app => {
 	// get the data necessary to load the explore page
 	app.get("/api/explore", async (req, res) => {
 		const recipes = await Recipe.find({"public": true}).select({
+			id: true,
 			title: true,
 			time: true,
 			author: true
@@ -49,6 +50,20 @@ module.exports = app => {
 		const recipes = await Recipe.find({"author.id": userId});
 		res.send(recipes);
 	});
+
+
+	// get recipe by id
+	app.get("/api/recipes/:recipeId", async (req, res) => {
+		console.log("the user is:", req.params.recipeId);
+		let recipeId = req.params.recipeId;
+
+		const recipes = await Recipe.find({"_id": ObjectId(recipeId)});
+		res.send(recipes);
+	});
+
+
+
+
 
 	// search by title
 	app.get("/api/recipes/:title/", async (req, res) => {

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {FETCH_USER} from "./types";
 import {FETCH_RECIPES} from "./types";
+import {FETCH_SINGLE_RECIPE} from "./types";
 
 export const fetchUser = () => async dispatch => {
 	const res = await axios.get('/api/current_user');
@@ -59,4 +60,10 @@ export const fetchMyRecipes = () => async dispatch => {
 	const res = await axios.get('/api/my_recipes');
 	console.log("in the my recipes action", res);
 	dispatch({type: FETCH_RECIPES, payload: res.data});
+};
+
+export const fetchSingleRecipe = (id) => async dispatch => {
+	const url = '/api/recipes/' + id;
+	const res = await axios.get(url);
+	dispatch({type: FETCH_SINGLE_RECIPE, payload: res.data});
 };

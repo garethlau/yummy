@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchMyRecipes} from "../../actions";
-
+import {Link} from 'react-router-dom';
 class MyRecipeList extends Component {
 	// call the action fetchMyRecipes()
 	componentDidMount() {
@@ -12,11 +12,13 @@ class MyRecipeList extends Component {
 	renderRecipes() {
 		return this.props.recipes.map(recipe => {
 			return(
-				<div>
-					<h1>{recipe.title}</h1>
-					<h3>cook time: {recipe.time}</h3>
-					<h3>main ingredients: {recipe.ingredients.mainIngredients}</h3>
-				</div>
+				<Link to={'/recipe/' + recipe._id}>
+					<div key={recipe._id}>
+						<h1>{recipe.title}</h1>
+						<h3>cook time: {recipe.time}</h3>
+						<h3>main ingredients: {recipe.ingredients.mainIngredients}</h3>
+					</div>
+				</Link>
 			)
 		})
 	}

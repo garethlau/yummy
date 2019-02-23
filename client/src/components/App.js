@@ -8,6 +8,7 @@ import Landing from './Landing';
 import Explore from './Explore/Explore';
 import RecipeNew from './newRecipe/RecipeNew';
 import MyRecipes from './myProfile/MyRecipes';
+import ExploreSingleRecipe from './SingleRecipe';
 
 class App extends Component {
 	componentDidMount() {
@@ -24,6 +25,7 @@ class App extends Component {
 						<Route path="/explore" component={Explore}/>
 						<Route exact={true} path="/my_recipes" component={MyRecipes}/>
 						<Route path="/recipes/new" component={RecipeNew}/>
+						<Route path="/recipe" component={ExploreSingleRecipe}/>
 					</div>
 				</BrowserRouter>
 			</div>
