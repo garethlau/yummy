@@ -1,2 +1,2 @@
 # yummy
-An exploration into the MERN stack
+An exploration into the MERN stack and state management with redux-thunk
